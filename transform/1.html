@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		body,h3,p{
+			margin: 0;
+			padding: 0;
+		}
+		@media screen and (max-width:768px){
+			figure{
+				width:100%;
+			}
+		}
+		@media screen and (min-width: 769px) and (max-width: 991px){
+			figure{
+				width:50%;
+			}
+		}
+		@media screen and (min-width:992px){
+			figure{
+				width:33.33%;
+			}
+		}
+		.wrap{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		figure{
+			margin: 0;
+    		position: relative;
+    		/*width: 33.33%;*/
+    		overflow: hidden;
+    		height: 300px;
+		}
+		figure img,h3,p,div,span{
+			transition: all 0.35s; /*全部有动画*/
+		}
+		figure img{
+			opacity: .8;
+		}
+		figcaption{
+			position: absolute;
+    		top: 0;
+    		left: 0;
+		}
+		.test1 figcaption{
+    		margin:20px;
+		}
+		.test1 p{
+			background: #fff;
+			margin:10px 0;
+			text-align: center;
+			transform: translate(-100px); /*初始不出现，初始处于左100px处*/
+		}
+		.test1 p:nth-of-type(1){
+			transition-delay: 0.05s;
+		}
+		.test1 p:nth-of-type(2){
+			transition-delay: 0.1s;
+		}
+		.test1 p:nth-of-type(3){
+			transition-delay: 0.15s;
+		}
+		.test1:hover p{
+			transform: translate(0px); /*回到原来的位置*/
+		}
+		.test1:hover img{
+			transform: translate(-30px);
+			opacity: .5;
+		}
+
+		.test2 figcaption div{
+			position: absolute;
+			top:10%;
+			left:10%;
+			transform: translate(0,-320px) rotate(0deg);
+		}
+		.test2 figcaption h3{
+			margin-top: 15%;
+			margin-left: 15%;
+		}
+		.test2 figcaption p{
+			margin-left: 15%;
+			transform: translate(0,50px);
+			opacity: 0;
+		}
+		.test2:hover figcaption p{
+			transform: translate(0,0);
+			opacity: 1;
+		}
+		.test2:hover  figcaption div{
+			transform: translate(0,0px) rotate(360deg);
+		}
+		.test2:hover img{
+			opacity: .5;
+		}
+
+		.test3 figcaption{
+			top:20%;
+			left:15%;
+		}
+		.test3 h3{
+			transform: skew(90deg);
+		}
+		.test3 p{
+			transform: skew(90deg);
+			transition-delay: 0.1s;
+		}
+		.test3:hover h3{
+			transform: skew(0deg);
+		}
+		.test3:hover p{
+			transform: skew(0deg);
+		}
+		.test3:hover img{
+			opacity: .5;
+		}
+
+		.test4 figcaption h3{
+			margin-top: 15%;
+			margin-left: 15%;
+			transform: scale(1.2,1.2);
+			opacity: 0;
+		}
+		.test4 figcaption p{
+			margin-left: 15%;
+			transform: scale(1.2,1.2);
+			opacity: 0;
+		}
+		.test4 figcaption div{
+			transform: scale(1.2,1.2);
+			opacity: 0;		
+		}
+		.test4 img{
+			transform: scale(1,1);
+		}
+		.test4:hover img{
+			opacity: .5;
+			transform: scale(1.2,1.2);
+		}
+		.test4:hover h3{
+			transform: scale(1,1);
+			opacity: 1;
+		}
+		.test4:hover p{
+			transform: scale(1,1);
+			opacity: 1;
+		}
+		.test4:hover div{
+			transform: scale(1,1);
+			opacity: 1;
+		}
+
+		.test5 figcaption h3{
+			transform: translate(0,-30px);
+			opacity: 0;
+		}
+		.test5 figcaption p{
+			transform: translate(0,30px);
+			opacity: 0;
+		}
+		.test5 figcaption div{
+			transform: skew(90deg);
+			opacity: 0;
+		}
+		.test5 figcaption div:nth-of-type(1){
+			transition-delay: 0.05s;
+		}
+		.test5 figcaption div:nth-of-type(2){
+			transition-delay: 0.1s;
+		}
+		.test5:hover img{
+			opacity: .5;
+		}
+		.test5:hover figcaption h3{
+			transform: translate(0);
+			opacity: 1;
+		}
+		.test5:hover figcaption p{
+			transform: translate(0);
+			opacity: 1;
+		}
+		.test5:hover figcaption div{
+			transform: skew(0);
+			opacity: 1;
+		}		
+	</style>
+</head>
+<body>
+	<div class="wrap">	
+		<!-- 位移动画解析：文字：1）从屏幕外水平移动到屏幕内，2）先后出现。 图片：1）向左位移 2）透明度变化（模拟制作遮罩层）-->
+		<figure class="test1">
+			<img src="img/1.jpg" alt="">
+			<figcaption>
+				<h3>位移动画</h3>
+				<p>图片内容1</p>
+				<p>图片内容2</p>
+				<p>图片内容3</p>
+			</figcaption>
+		</figure>
+		<!-- 旋转动画解析：文字：1）从50px下面升上来，所以先隐藏后出现用opacity 图片：1）向下位移 2）旋转着进入 -->
+		<figure class="test2">
+			<img src="img/2.jpg" alt="">
+			<figcaption style="width: 100%;height: 100%;">
+				<h3>旋转动画</h3>
+				<p>图片内容1</p>
+				<div style="border:1px solid #000; width:80%;height:80%;"></div>
+				<!-- 宽高要设置百分数，都是相对于自己的直接父元素，若直接父元素没有设置宽高，那么就没有办法继承，这里就没有办法生效。 -->
+			</figcaption>
+		</figure>
+		<figure class="test3">
+			<img src="img/3.jpg" alt="">
+			<figcaption>
+				<h3>斜切动画</h3>
+				<p>图片内容1啦啦啦啦</p>
+			</figcaption>
+		</figure>
+		<figure class="test4">
+			<img src="img/4.jpg" alt="">
+			<figcaption style="width: 100%;height: 100%;">
+				<h3>缩放动画</h3>
+				<p>图片内容1啦啦啦</p>
+				<div style="border:1px solid #000;width:80%;height: 80%;position: absolute; top:10%;left: 10%;"></div>
+			</figcaption>
+		</figure>
+		<figure class="test5"> 
+			<img src="img/1.jpg" alt="">
+			<figcaption style="width: 100%;height: 100%;">
+				<h3>绘制线条效果</h3>
+				<p>出现漂亮的井字格</p>
+				<div style="position: absolute;border-left:1px solid #000; border-right: 1px solid #000; width:70%;height: 80%;top:10%;left: 15%; "></div>
+				<div style="position: absolute;border-top:1px solid #000; border-bottom: 1px solid #000;width:80%;height: 70%;top:15%;left: 10%; "></div>
+			</figcaption>
+		</figure>
+		<figure>
+			<img src="img/2.jpg" alt="">
+			<figcaption>
+				<h3>图片标题</h3>
+				<p>图片内容1</p>
+				<p>图片内容2</p>
+				<p>图片内容3</p>
+			</figcaption>
+		</figure>	
+	</div>
+
+</body>
+</html>
