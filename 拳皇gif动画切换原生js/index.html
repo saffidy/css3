@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		/* 页面中id默认占js变量内存*/
+		/*写的思路 写的过程*/
+		function Game(obj){
+			this.obj = obj;
+			this.left = 0;
+			this.time = null; //定时器
+			//构造器函数
+			// this.active = function(){}
+			// this.arg = obj;  这里的this代表的就是实例化对象，比如这里的person 那么你直接写person.arg = 1;那么就会直接改变arg的值
+
+		}
+		//解耦要好，也就是各函数各模块之间联系几乎没有，这个扩展性比较好。以后游戏升级维护只用维护技能表就好。。
+		//创建一个技能表
+		Game.prototype.skill = {
+			"37":function(){ //后  后退
+ 				this.time = setInterval(function(){
+ 					this.left -= 5; //每一次前进5px
+ 					this.obj.style.left = this.left + 'px';
+ 				}.bind(this),13);				
+			},
+			"39":function(){  //前  前进
+ 				this.obj.src = "images/YAGAMI/advance.gif";
+ 				this.time = setInterval(function(){
+ 					this.left += 5; //每一次前进5px
+ 					this.obj.style.left = this.left + 'px';
+ 				}.bind(this),13);
+			},
+			"40":function(){  //下  集气
+
+			}
+		}
+
+		Game.prototype.stop = function(){
+			//不动
+			clearInterval(this.time);  //停止运动
+			this.obj.src = "images/YAGAMI/stand.gif";
+		}
+
+		Game.prototype.active = function(keyCode){  //为了后期维护方便，所以名字一定要好好写，写的很容易读懂代码。
+			// console.log(keyCode);
+			if(this.skill[keyCode]){
+				this.skill[keyCode]().call(this); //call apply bind 都可以改变当前this指向
+			}
+		}
+		var imgMC =document.getElementById('MC');
+		var person = new Game(imgMC); //实例化过程 每实例化一个函数，那么这个构造器函数中的所有代码都会运行一遍。所以this.active这个东西也会执行，影响性能。。所以一般用Game.prototype.active来写。
+
+		//其实就是改变git图片 来变成不同的动作
+		document.onkeydown = key;
+
+		function key(ev){
+			//键盘事件 ev 键盘敲击对象  ev.keyCode 
+			console.log(ev);
+			var keyCode = ev.keyCode;
+			game.active(keyCode);
+			this.onkeyup = function(){  //按键松开
+				person.stop();  //松开键盘就不动了
+				this.onkeydown = key;
+			}
+			this.onkeydown = null;  //按完一次就把它清空
+		}
+		/*
+			前39后37上下40
+		*/
+		/*
+			function Game(){}  //构造器函数
+			var game = new Game(); //实例化的过程
+			game.active();
+			js是基于原型的面向对象，对象产生于原型（构造函数的原型属性）
+			java c# c++ 是基于类的面向对象，对象产生于类
+
+		*/
+		/*
+			js方面的难度层级：---3)4)是任何语言的高级编程 3)4)就是框架设计师，比如设计出vue框架等
+			1）页面特效 5k-8k
+			2）数据交互，处理 6k-10k
+			3）算法 15k++
+			4）代码设计 20k++
+
+			H5游戏方向：更加原生js
+		*/
+
+		/*
+			this指向：
+			指向当前执行当前方法的实例  比如window.setInterval
+			原型链：
+			实例(对象)   函数(构造器)  原型属性(原型对象)--构造器.prototype
+			实例是构造函数构造来的。
+			实例是通过构造器的原型对象克隆来的  __proto__ 
+
+			函数本身就是对象
+
+			怎么样能够实际运用原型链？ 继承  大型应用
+		*/
+		/*
+			写自己的博客园 
+			把一个知识点让大家都听懂 说明是真正的懂了
+			所以在博客园或各大平台写一些文章
+			拒绝只会写效果的一个码农 而是一定要懂原理
+		*/
+	</script>
+</body>
+</html>

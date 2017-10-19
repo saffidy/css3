@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="Keywords" content="">
+	  <meta name="Description" content="">
+	  <title>鼠标不同方位的移入移出 - 骚气的新奇老师</title>
+	  <style type="text/css">
+			*{
+				padding:0;
+				margin:0
+			}
+			img{
+				vertical-align:middle;
+			}
+			#box{
+				width:1250px;
+				height:360px;
+				margin:100px auto;
+				font-family:'Microsoft yahei';
+			}
+			#box ul li{
+				list-style:none;
+				float:left;
+				margin:0 10px;
+				position:relative;
+				overflow:hidden;
+			}
+			#box ul li a{
+				width:230px;
+				height:360px;
+				position:absolute;
+				left:0;
+				top:0;
+				visibility: hidden;
+				background:url("img/new-bg.png");
+				text-decoration:none;
+			}
+			#box ul li a p{
+				color:#fff;
+				font-size:14px;
+				text-align:center;
+			}
+			#box ul li a p.p1{
+				padding-top:160px;
+			}
+			
+			/*从顶部*/
+			.from-top{
+				animation:from-top 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes from-top{
+				from{
+					top:-360px;  /*li的高度*/
+				}
+				to{
+					top:0;
+					visibility: visible;  /*可见的*/
+				}
+			}
+			/*css3 animation 动画会执行，但是会回归初始值 所以我们要保存*/
+			.to-top{
+				animation:to-top 0.3s; 
+			}
+			@keyframes to-top{
+				to{
+					top:-360px;
+					visibility: visible;  /*可见的*/
+				}
+			}			
+			/*从下面*/
+			.from-bottom{
+				animation:from-bottom 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes from-bottom{
+				from{
+					top:360px;  /*li的高度*/
+				}
+				to{
+					top:0;
+					visibility: visible;  /*可见的*/
+				}
+			}	
+			.to-bottom{
+				animation:to-bottom 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes to-bottom{
+				to{
+					top:360px;
+					visibility: visible;  /*可见的*/
+				}
+			}	
+			/*从左面*/
+			.from-left{
+				animation:from-left 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes from-left{
+				from{
+					left:-230px;  /*li的高度*/
+				}
+				to{
+					left:0;
+					visibility: visible;  /*可见的*/
+				}
+			}
+			.to-left{
+				animation:to-left 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes to-left{
+				to{
+					left:-230px;  /*li的高度*/
+					visibility: visible;
+				}
+			}
+			/*从右面*/
+			.from-right{
+				animation:from-right 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes from-right{
+				from{
+					left:230px;  /*li的高度*/
+				}
+				to{
+					left:0;
+					visibility: visible;  /*可见的*/
+				}
+			}
+			.to-right{
+				animation:to-right 0.3s forwards; /*forwards 保存动画最后一帧的属性*/
+			}
+			@keyframes to-right{
+				to{
+					left:230px;  /*li的高度*/
+					visibility: visible;
+				}
+			}
+		</style>
+	</head>
+		<body>
+			<div id='box'>
+				<ul>
+					<li>
+						<img src='img/1.jpg'/>
+						<a href=''>
+							<p class='p1'>秋冬上新 领券立减20</p>
+							<p>点击进入</p>
+						</a>
+					</li>
+					<li>
+						<img src='img/2.jpg'/>
+						<a href=''>
+							<p class='p1'>钜惠满138减15</p>
+							<p>点击进入</p>
+						</a>
+					</li>
+					<li>
+						<img src='img/3.jpg'/>
+						<a href=''>
+							<p class='p1'>冬装尖品 强势登陆</p>
+							<p>点击进入</p>
+						</a>
+					</li>
+					<li>
+						<img src='img/4.jpg'/>
+						<a href=''>
+							<p class='p1'>十一国庆除出游季</p>
+							<p>购新衣才够【型】</p>
+						</a>
+					</li>
+					<li>
+						<img src='img/5.jpg'/>
+						<a href=''>
+							<p class='p1'>秋上新</p>
+							<p>点击进入</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<script src="1.js"></script>
+		</body>
+</html>
