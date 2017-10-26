@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		.title{
+			width: 300px;
+    		display: block;
+    		margin: 0 auto;
+		}
+		.but{
+			color:#fff;
+			line-height: 39px;
+			text-align: center;
+			cursor: pointer;
+			float: left;
+		}
+		.search{
+			width:502px;
+			border:1px solid #ddd;
+			display: none;
+			position: absolute;
+			top: 37px;
+		}
+		.search ul li{
+			list-style: none;
+			width:502px;
+			height:30px;
+			text-indent: 10px;
+			line-height: 30px;
+		}
+		.search ul li a{
+			color:#000;
+			text-decoration: none;
+			display: block;
+		}
+		.search ul li a:hover{
+			background-color: #ddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="show">
+		<img src="img/1.png" class="title" alt="">
+		<input type="text" id="text" oninput="valueChange()">
+		<div class="but">百度一下</div>
+		<div class="search">
+			<ul>
+				
+			</ul>
+		</div>
+	</div>
+
+	<!-- 不同的script标签是顺序执行的 -->
+	<!-- <script type="text/javacript" src="js/jquery.1.11.2.js"></script> -->
+	<!-- jquery是通过script标签解析执行的 -->
+
+	<script type="text/javascript">
+		/*
+			js是浏览器端唯一默认安装环境，这是他的天然优势 js是  并且node.js已经走出浏览器了，走向服务端了。
+		*/
+		/*
+			根据关键字进行关键字联想，
+			问题：如何获取这个关键字
+			用户输入的是什么 在哪里输入
+
+			每一次获取新的关键字在什么时候发生 内容变化是什么时候
+   
+		*/
+		var oText = document.getElementById('text'),
+			oSea = document.getElementsByClassName('search')[0],
+			oUl = document.querySelector('.search ul');
+		function valueChange(){
+			//oText.value
+			var val = this.value;
+			// if(val != ''){
+			// 	oSea.style.display = 'block';
+			// }else{
+			// 	oSea.style.display = 'none';
+			// }
+			//if会将数据隐式转换为布尔值   "" 0 null undefined这四个值都是false
+			oSea.style.display = val ? 'block' : 'none';
+			var jsonp = document.createElement('script');
+			jsonp.src = '://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + val + '&cb=xiaolong';  //wd 关键词 cb 接口名
+			document.body.appendChild(jsonp); //新建的script标签放到body中
+		}
+		/*
+			跨域：跨域名获取外部资源  不同域名、不同端口。不同协议 （简单来说，用别人的数据接口）
+			前后端数据交互： ajax（实现无刷新数据更新的方式） 数据API接口 跨域 后台模板渲染
+		*/
+		function xiaolong(data){
+			oUl.innerHTML = ''; //清空原始内容
+			data.s.forEach(function(el){
+				var oLi = document.createElement('li');
+				oLi.innerHTML = '<a href="https://www.baidu.com/su?wd=' + el + '">' + el + '</a>';  //innerHTML是可以解析标签的，innerText是仅仅当做字符串看的。
+				oUl.appendChild();
+			});
+		}
+	</script>
+	<!-- <script type="text/javascript" src=""></script> -->
+</body>
+</html>
