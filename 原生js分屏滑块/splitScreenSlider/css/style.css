@@ -1,0 +1,111 @@
+body,section,div,p,h1,h2,h3,h4,h5,h6 {
+    margin:0;
+    padding:0;
+}
+body{
+    font-size: 100%;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-smoothing:antialiased;  //怎么哪里都要设置字体平滑 有那么好看》
+    -webkit-font-smoothing: antialiased;
+    color:#333;
+}
+/* 最外面的容器 相对定位 全屏 溢出隐藏*/
+#wrapper{
+    position: relative;
+    width:100vw;
+    // min-height: 50vw;
+    height:100vh;
+    overflow:hidden;
+}
+// layer 布局 正反面都用的统一样式 全屏 溢出隐藏
+.layer{
+    position: absolute;
+    width:100vw;
+    // min-height: 50vw;
+    height:100vh;
+    overflow: hidden;
+}
+// layer中的内容容器 绝对定位 是相对于他父元素的
+.layer .content_wrapper{
+    width:100vw;
+    // min-height:50vw;
+    height:100vh;
+    position:absolute;
+}
+// 内容容器-- 内容Body 绝对定位 垂直居中 文字水平居中 是父容器宽度的25% 而父容器是满屏宽
+.layer .content_body{
+    width:25%;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);  // transform:translateY(-50%);
+    text-align: center;
+}
+// 段落 文字缩进
+.layer .content_body p{
+    text-indent:2rem;
+    text-align: left;
+}
+.layer img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.bottom{
+    background: #222;
+    z-index: 1;
+}
+.bottom .content_body{
+    right:10%;
+
+}
+.bottom h2{
+    color:#f62368;
+}
+.bottom p{
+    color:#eee;
+}
+
+.top{
+    background: #eee;
+    color:#222;
+    width:50vw;  //--
+    z-index: 2;
+    
+    transform:skew(-30deg);
+    margin-left:-1000px;  //？？
+    width:calc(50vw + 1000px);  //？？
+}
+.top .content_wrapper{
+    transform:skew(30deg);
+    margin-left:1000px;
+}
+.top .content_body{
+    left:10%;
+}
+
+.handle{
+    position:absolute;
+    left:50%;
+    width:5px;
+    top:0;
+    background: #f62368;
+    height: 100%;
+    z-index: 3;
+
+    top:50%;
+    transform:rotate(30deg) translateY(-50%);
+    height:200%;
+    transform-origin: top;
+}
+// .skewed .handle{
+
+// }
+// .skewed .top{
+
+// }
+// .skewed .top .content_wrapper{
+
+// }

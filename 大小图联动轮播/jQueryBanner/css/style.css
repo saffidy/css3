@@ -1,0 +1,148 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "microsoft yahei", sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #333;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0
+}
+
+a {
+	display: block;
+	text-decoration: none;
+}
+html{
+	height:100%;
+}
+body{
+	height:100%;
+}
+.wrap{
+	width:100%;
+	margin:0 auto;
+	height:100%;
+}
+.banner-box {
+	height: 100%;
+	position: relative;
+	overflow:hidden;
+}
+{
+	height: 100%;
+	position: relative;
+}
+
+ul {
+	height: 100%;
+}
+
+ul li {
+	height: 100%;
+	float:left;
+}
+.banner-wrap{
+	height: 100%;
+}
+ul a {
+	height: 100%;
+}
+
+ul a img {
+	width: 100%;
+	height: 100%;
+}
+.banner-inner {
+	position: absolute;
+	width:80%;
+	top:0;
+	left:10%;
+	bottom:0;
+	z-index:1;
+}
+.mobile {
+	position: absolute;
+	width: 258px;
+	height: 461px;
+	padding: 57px 21px 57px;
+	top: 50%;
+    margin-top: -316px;
+    left:50%;
+    margin-left:-150px;
+    z-index:99;
+}
+.mobile img {
+	width: 258px;
+	height: 463px;
+}
+.mobile-content{
+	overflow:hidden;
+}
+.mobile-pic li{
+	float: left;
+}
+.mobile i {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 3;
+	background: url(../img/mobg.png) no-repeat center center;
+	background-size: 100% 100%;
+}
+.swiper-content {
+	height: 100%;
+	position: relative;
+}
+.btn-prve{
+	position: absolute;
+	left:0;
+	top:50%;
+	width:60px;
+	height:90px;
+	margin-top:-78px;
+	display: block;
+	text-indent: -9999px;
+	background: url(../img/prve.png) no-repeat center center;
+	background-size:100% auto;
+}
+.btn-next{
+	position: absolute;
+	right:0;
+	top:50%;
+	width:60px;
+	height:90px;
+	margin-top:-78px;
+	display: block;
+	text-indent: -9999px;
+	background: url(../img/next.png) no-repeat center center;
+	background-size:100% auto;
+}
+.navlist{
+	position: absolute;
+	right:10px;
+	bottom:80px;
+	height:7px;
+}
+.navlist li{
+	width: 7px;
+	height: 7px;
+	margin-right:5px;
+	float: left;
+	background:rgba(255,255,255,0.6);
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+.navlist li.navactive{
+	background:rgba(255,255,255,1);
+}
+
