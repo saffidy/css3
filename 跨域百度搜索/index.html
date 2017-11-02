@@ -91,8 +91,8 @@
 			跨域：跨域名获取外部资源  不同域名、不同端口。不同协议 （简单来说，用别人的数据接口）
 			前后端数据交互： ajax（实现无刷新数据更新的方式） 数据API接口 跨域 后台模板渲染
 		*/
-		function xiaolong(data){
-			oUl.innerHTML = ''; //清空原始内容
+		function xiaolong(data){  //data是关联搜索结果  此方法是将结果遍历展示在页面上
+ 			oUl.innerHTML = ''; //清空原始内容
 			data.s.forEach(function(el){
 				var oLi = document.createElement('li');
 				oLi.innerHTML = '<a href="https://www.baidu.com/su?wd=' + el + '">' + el + '</a>';  //innerHTML是可以解析标签的，innerText是仅仅当做字符串看的。
