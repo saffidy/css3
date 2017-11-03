@@ -73,7 +73,7 @@
 
 		var x = 0;
 		function add(){
-			setTimeout(arguments.callee,50);
+			// setTimeout(arguments.callee,50);
 			setTimeout(add,50); //递归调用 可以避免定时器的同步队列阻塞bug
 		}
 
