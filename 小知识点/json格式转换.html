@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <input type="checkbox" checked="checked"><label for="">女性</label>
+    <script>
+        var data=[{'name':1,'title':'2'},{'name':3,'title':4},{'name':5,'title':6}];
+        console.log('data',data);
+        var newArr = [];
+        for(var i=0;i<data.length;i++){ //数组遍历
+            //遍历数组中的对象
+            var arrChild = [];
+            arrChild['name'] = Number(data[i].name);
+            arrChild['title'] = Number(data[i].title);
+            newArr.push(arrChild);
+        }
+        console.log('newArr',newArr);
+        data = newArr;
+        console.log('data',data);
+
+        // 转换为data=[[1,2],[3,4],[5,6]] 
+    </script>
+</body>
+</html>
