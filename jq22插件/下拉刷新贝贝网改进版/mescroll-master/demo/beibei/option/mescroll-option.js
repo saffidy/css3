@@ -56,14 +56,15 @@ function initMeScroll(mescrollId, options) {
 	// var index = parseInt(Math.random()*6);
 	// console.log(index);
 	//下拉刷新的布局内容
-	var htmlContent = '<div class="downwarp-slogan">阳光</div>';
-	htmlContent += '<div class="downwarp-progress"></div>';
+	var htmlContent = '<div class="downwarp-progress"></div>';
 	htmlContent += '<div class="downwarp-loading mescroll-rotate"></div>';
+	htmlContent += '<div class="downwarp-slogan">阳光</div>';
 	// htmlContent += '<div class="downwarp-mascot"></div>';
 	
 	//自定义的配置 (以下注释部分等同于mescroll本身的默认配置,这里贴出来是为了便于理解,实际项目可直接删除)
 	var myOption={
 		down:{
+			
 			offset: 65, //触发刷新的距离
 			htmlContent: htmlContent, //布局内容
 			inited: function(mescroll, downwarp) {
@@ -74,8 +75,8 @@ function initMeScroll(mescrollId, options) {
 			},
 			inOffset: function(mescroll) {
 				//进入指定距离范围内那一刻的回调
-				var arr = ['11111','2222222','33333333','444444','555555','666666666'];
-				var index = parseInt(Math.random()*6);
+				var arr = ['阳光触手可及','分担风雨 共享阳光'];
+				var index = parseInt(Math.random()*2);
 				console.log(index);
 				mescroll.downSloganDom.innerText = arr[index];
 				mescroll.downLoadingDom.style.display="none";
