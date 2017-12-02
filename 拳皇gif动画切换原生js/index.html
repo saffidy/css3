@@ -26,7 +26,7 @@
 		Game.prototype.skill = {
 			"37":function(){ //后  后退
  				this.time = setInterval(function(){
- 					this.left -= 5; //每一次前进5px
+ 					this.left -= 5; //每一次后退5px
  					this.obj.style.left = this.left + 'px';
  				}.bind(this),13);				
 			},

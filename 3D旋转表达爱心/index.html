@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>
+	</title>
+	<link rel="stylesheet" href="">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background-color: #000;
+		}
+		#heart{
+			width:200px;
+			height:200px;
+			border:2px solid red;
+			margin:200px auto;
+			/*斜杠之前 是水平半径 斜杠后面 是竖直半径 四个值都是顺时针：左上 右上 右下 左下*/
+			border-radius:50% 40% 30% 10%/10% 30% 40% 50%;
+		}
+		.heart{
+			position: absolute;
+			left:0;
+			top:0;
+
+		}
+
+		body{
+			perspective: 1000px;/*景深 取值范围 800-1000*/
+		}
+		#cube{
+			position: relative;
+			width:200px;
+			height:20px;
+			margin:30px auto;
+			transform-origin:50% 50% -101px; /*x y z*/
+			transform-style:preserve-3d; /* 3d环境 */ 
+			transition:2s; /*动画的过渡*/
+		}
+		#cube div{
+			position: absolute;
+			left:0;
+			top:0;
+			width:200px;
+			height:200px;
+			border:2px solid red;
+		}
+		#cube div:nth-child(1){
+			top:-202px;
+			/*transform-origin:50% 50% 0; 旋转基点默认值*/
+			transform-origin:bottom; 
+			transform: rotateX(90deg);
+		}
+		#cube div:nth-child(2){
+			top:202px;
+			transform-origin:top; 
+			transform: rotateX(-90deg);
+		}
+		#cube div:nth-child(3){
+			left:-202px;
+			transform-origin:right; 
+			transform: rotateY(-90deg);
+		}
+		#cube div:nth-child(4){
+			left:-202px;
+			transform-origin:left; 
+			transform: rotateY(90deg);
+		}
+		#cube div:nth-child(5){
+			/*top:0px;*/
+		}
+		#cube div:nth-child(6){
+			/*top:0px;*/
+			tranform:translateZ(-202px);
+		}
+		#cube:hover{
+			transform:rotateY(360deg);
+		}
+	</style>
+</head>
+<body>
+	<div id="heart"></div>
+
+	<div id="cube">
+		<div>上</div>
+		<div>下</div>
+		<div>左</div>
+		<div>右</div>
+		<div>前</div>
+		<div>后</div>
+	</div>
+	<script src="index.js"></script>
+	<script>
+		//思路：当下一节按钮出现，自动点击。。。实现机器自动点击。。
+		//http://www.imooc.com/video/506  其实所谓的下一节 就是网址发生了改变 数字+1
+		var jquery = document.createElement('script');
+		jquery.src = 'http://libs.baidu.com/jquery/1.11.3/jquery.min.js';
+		document.getElementsByTagName('head')[0].appendChild(jquery);
+
+
+		var nextBtn = document.getElementsByClassName('J-next-btn');
+		function play(){
+			if(!$('.J-next-btn').hasClass('hide')){
+				console.log('出现停止按钮');
+				var url = window.location.href;
+				var index = url.lastIndexOf('\/');
+				url = url.slice(0,index+1) + (parseInt(url.slice(index + 1)) + 1);
+				 window.location.replace(url);
+			}else{
+				console.log('正在播放');
+			}
+			// setTimeout(arguments.callee,50);
+			setTimeout(play,6000); //递归调用 可以避免定时器的同步队列阻塞bug
+		}
+		play();
+	</script>
+</body>
+</html>

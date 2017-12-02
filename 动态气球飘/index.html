@@ -14,7 +14,9 @@
 			overflow: hidden;
 			background-color: #ccc;
 		}
+		/* 这里画气球主要还是用到了border-radius 让他不是正圆而是一角突出 跟波浪效果很相似 */
 		.balloon{
+			position: absolute;
 			width:160px;
 			height:160px;
 			background-color: #368;
@@ -25,11 +27,22 @@
 			/*盒子阴影 x位移 y位移 羽化程度 半径 颜色 内外模式*/
 			box-shadow:0 0 50px 10px red inset;
 		}
+		/*每个元素都有两个伪类元素在召唤的时候会出来，:after :before 虽然css3的标准是::after 但是浏览器内核是全面支持:after 所以写的时候统一写:after 单冒号即可。 */
+		.balloon:after{
+			position: absolute;
+		    bottom: 0;
+		    right: 0;
+		    content: '';
+		    border: 8px solid transparent;
+		    border-right-color: green;
+		    transform: rotate(45deg);
+		    border-radius: 50%;
+		}
 
 	</style>
 </head>
 <body>
-	<script>
+    <script>
 		/*
 			先写css写出一个静态的气球。。
 			需求分析：
@@ -87,6 +100,5 @@
 			for循环直接写在script标签中是不对的，因为for不是块级作用域，所以for循环中的i是个全局变量，i会污染全局。
 			浏览器重绘，
 		*/
-	</script>
-</body>
+	</script></body>
 </html>
